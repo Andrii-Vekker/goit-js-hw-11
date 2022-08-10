@@ -2,9 +2,24 @@
     box-sizing: border-box;
 }
 
+.body {
+    position: relative;
+    display: flex;
+        flex-direction: row;
+        justify-content: center;
+}
+
+.form-container {
+    margin: auto;
+    max-width: 80%;
+    background-color: #2196F3;
+
+}
+
 .search-form {
     margin: auto;
     max-width: 300px;
+    
 }
 
 .input {
@@ -13,14 +28,14 @@
     border: 1px solid grey;
     float: left;
     width: 80%;
-    background: #f1f1f1;
+    background: #fff;
 }
 
 .formBtn {
+    background: #f1f1f1;
         float: left;
         width: 20%;
         padding: 10px;
-        background: #2196F3;
         color: white;
         font-size: 17px;
         border: 1px solid grey;
@@ -37,4 +52,57 @@
         content: "";
         clear: both;
         display: table;
+}
+
+.load-more {
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+    right: 50%;
+}
+
+.gallery {
+    margin:auto;
+    margin-top: 1%;
+        max-width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.photo-card:not(:last-child) {
+    margin-right: 5px;
+}
+
+.photo-card {
+   width: calc((100% - 6 * 15px) / 4);
+        
+     
+}
+
+.photo {
+    width: 100%;
+    height: 220px;
+}
+
+.info {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+ 
+
+}
+
+.info-item {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+/* width: calc((100% - 6 * 15px) / 4); */
+}
+.info-item:not(:last-child) {
+    margin-right: 7px;
 }
