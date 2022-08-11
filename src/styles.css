@@ -55,10 +55,24 @@
 }
 
 .load-more {
+    /* display: none; */
     position: absolute;
     position: fixed;
     bottom: 0;
     right: 50%;
+}
+
+.load-more:hover{
+    color: #fff;
+    background-color: #0b7dda;
+}
+
+.loadMoreHidden{
+    display: none;
+}
+
+.loadMoreVisible {
+    display: block;
 }
 
 .gallery {
