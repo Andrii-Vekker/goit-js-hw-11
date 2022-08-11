@@ -185,7 +185,7 @@ function createGallery(array) {
   <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy"/>
    <div class="info">
      <p class="info-item">
-       <b>Likes:</b><b>${likes}</b>
+       <b class="b">Likes:</b><b>${likes}</b>
     </p>
      <p class="info-item">
        <b>Views:</b><b>${views}</b>

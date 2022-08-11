@@ -184,5 +184,12 @@ align-items: center;
 }
 
 .info-item:not(:last-child) {
-    margin-right: 1%;
+    margin-right: 3%;
+}
+
+.info-item b {
+    text-decoration: none;
+    pointer-events: none;
+    font-size: 13px;
+
 }
