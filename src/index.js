@@ -146,7 +146,7 @@ function loadMoreBtnHandler () {
    if (name !== "") {
         getImg().then(photo =>
         renderGallery(photo) 
-        ).catch(error => error(Notify.failure('Sorry, there are no images matching your search query. Please try again')));
+        ).catch(error => console.log(error));
     };
 };
 
@@ -165,8 +165,8 @@ function formHandler(e) {
   refs.loadMoreBtn.classList.add("loadMoreHidden");
   name = refs.input.value.trim();
    refs.galleryContainer.innerHTML = ""
-  if (name === "") {
-    
+  if (name === "" ) {
+    Notify.failure('Sorry, there are no images matching your search query. Please try again');
      refs.loadMoreBtn.classList.remove("loadMoreVisible");
 refs.loadMoreBtn.classList.add("loadMoreHidden")
     };
@@ -175,7 +175,7 @@ refs.loadMoreBtn.classList.add("loadMoreHidden")
       refs.loadMoreBtn.classList.remove("loadMoreHidden")
       getImg().then(photo =>
         renderGallery(photo)         
-        ).catch(error => error(Notify.failure('Sorry, there are no images matching your search query. Please try again')));
+        ).catch(error => error(console.log(error)));
     };
 };
     
@@ -200,12 +200,8 @@ function createGallery(array) {
 };
 
 function renderGallery(array) {
-   if (array.hits.length === 0) {
-     Notify.failure('Sorry, there are no images matching your search query. Please try again');
-  };
-  if (count > array.totalHits/40) {
-     
-    Notify.failure('Were sorry, but you ve reached the end of search results');
+     if (count > array.totalHits/40) {
+          Notify.failure('Were sorry, but you ve reached the end of search results');
     refs.loadMoreBtn.classList.remove("loadMoreVisible")
     refs.loadMoreBtn.classList.add("loadMoreHidden")
   };
