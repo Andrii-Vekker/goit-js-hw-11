@@ -106,13 +106,7 @@ export { name, count }
 ///////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-const lightbox = new SimpleLightbox(".gallery a", {
-  captionsData: "alt",
-  captionDelay: 250,
-  captionPosition: "bottom",
-  showCounter: true,
-  enableKeyboard: true
-});
+
 
 
 const URL = `https://pixabay.com/api/`;
@@ -188,7 +182,7 @@ refs.loadMoreBtn.classList.add("loadMoreHidden")
 function createGallery(array) {
   return array.hits.reduce((acc, { largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => acc +
     `<a "gallery__item" href="${largeImageURL}">
-  <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy" />
+  <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy"/>
    <div class="info">
      <p class="info-item">
        <b>Likes:</b><b>${likes}</b>
