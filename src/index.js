@@ -50,11 +50,17 @@ function galleryHandler(e) {
 });
 }
 
+
+
+
 function loadMoreBtnHandler(e) {
   e.preventDefault
+  const cardHeight = refs.gallery.clientHeight
+  console.log(cardHeight)
+ 
   count += 1;
   window.scrollBy({
-  behavior: "smooth", top: 240 * 2, left:0
+  behavior: "smooth", top: cardHeight , left:0
 });
   if (name !== "") {
     getImg().then((photo) =>{
@@ -124,6 +130,7 @@ function createGallery(array) {
 };
 
 function renderGallery(array) {
+  const cardHeight = refs.gallery.clientHeight
     refs.galleryContainer.insertAdjacentHTML("beforeend", createGallery(array));
 };
 
