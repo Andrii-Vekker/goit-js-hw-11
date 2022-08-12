@@ -12,4 +12,5 @@ async function getImg() {
    } catch (error) {
     console.log(error)
    }
-}
+};
+getImg(name, count)
