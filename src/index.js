@@ -16,6 +16,7 @@ const refs = {
   formBtn: document.querySelector(".formBtn"),
   galleryContainer: document.querySelector(".gallery"),
   loadMoreBtn: document.querySelector(".load-more"),
+  photoCard: document.querySelector(".photo-card"),
   gallery: document.querySelector(".gallery")
 };
 
@@ -65,6 +66,11 @@ function formHandler(e) {
   refs.loadMoreBtn.classList.add("loadMoreHidden");
   name = refs.input.value.trim();
    refs.galleryContainer.innerHTML = ""
+  if (!name) {
+    Notify.failure('Sorry, there are no images matching your search query. Please try again');
+     refs.loadMoreBtn.classList.remove("loadMoreVisible");
+    refs.loadMoreBtn.classList.add("loadMoreHidden");
+    };
     if (name !== "") {
       refs.loadMoreBtn.classList.add("loadMoreVisible");
       refs.loadMoreBtn.classList.remove("loadMoreHidden")
@@ -73,7 +79,7 @@ function formHandler(e) {
           Notify.failure('Were sorry, but you ve reached the end of search results');
               refs.loadMoreBtn.classList.remove("loadMoreVisible");
        refs.loadMoreBtn.classList.add("loadMoreHidden");
-      };
+      }else Notify.success(`Hooray! We found ${photo.totalHits} images`);
       renderGallery(photo)
     }).catch(error => error(console.log(error)));
     };
