@@ -16,7 +16,6 @@ const refs = {
   formBtn: document.querySelector(".formBtn"),
   galleryContainer: document.querySelector(".gallery"),
   loadMoreBtn: document.querySelector(".load-more"),
-  photoCard: document.querySelector(".photo-card"),
   gallery: document.querySelector(".gallery")
 };
 
