@@ -8,8 +8,7 @@ const URL = `https://pixabay.com/api/`;
 const KEY = `29175258-0e972b66084e1db5719a62740`;
 
 let name = "";
-
-  let count = 1;
+let count = 1;
 
 const refs = {
   form: document.querySelector(".search-form"),
@@ -39,10 +38,16 @@ function galleryHandler(e) {
 
 function loadMoreBtnHandler() {
   count += 1;
-   if (name !== "") {
-        getImg().then(photo =>
-        renderGallery(photo) 
-        ).catch(error => console.log(error));
+  if (name !== "") {
+    getImg().then((photo) =>{
+            if (count > photo.totalHits/40) {
+          Notify.failure('Were sorry, but you ve reached the end of search results');
+              refs.loadMoreBtn.classList.remove("loadMoreVisible");
+       refs.loadMoreBtn.classList.add("loadMoreHidden");
+      };
+      renderGallery(photo)
+    })
+  .catch(error => console.log(error));
   };
   return count
 };
@@ -97,11 +102,7 @@ function createGallery(array) {
 };
 
 function renderGallery(array) {
-     if (count > array.totalHits/40) {
-          Notify.failure('Were sorry, but you ve reached the end of search results');
-    refs.loadMoreBtn.classList.remove("loadMoreVisible")
-    refs.loadMoreBtn.classList.add("loadMoreHidden")
-  };
+  
   refs.galleryContainer.insertAdjacentHTML("beforeend", createGallery(array));
 };
 
