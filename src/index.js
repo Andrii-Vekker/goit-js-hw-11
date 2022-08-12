@@ -16,10 +16,7 @@ const refs = {
   formBtn: document.querySelector(".formBtn"),
   galleryContainer: document.querySelector(".gallery"),
   loadMoreBtn: document.querySelector(".load-more"),
-  photoCard: document.querySelector(".photo-card"),
-  gallery: document.querySelector(".gallery"),
-  end: document.querySelector(".end")
-
+  gallery: document.querySelector(".gallery")
 };
 
 
@@ -51,16 +48,14 @@ function galleryHandler(e) {
 }
 
 
-
-
 function loadMoreBtnHandler(e) {
   e.preventDefault
-  const cardHeight = refs.gallery.clientHeight
+  const cardHeight = refs.gallery.getBoundingClientRect().height/2
   console.log(cardHeight)
  
   count += 1;
   window.scrollBy({
-  behavior: "smooth", top: cardHeight , left:0
+  behavior: "smooth", top: cardHeight, left:0
 });
   if (name !== "") {
     getImg().then((photo) =>{
