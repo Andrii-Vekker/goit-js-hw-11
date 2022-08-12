@@ -17,8 +17,22 @@ const refs = {
   galleryContainer: document.querySelector(".gallery"),
   loadMoreBtn: document.querySelector(".load-more"),
   photoCard: document.querySelector(".photo-card"),
-  gallery: document.querySelector(".gallery")
+  gallery: document.querySelector(".gallery"),
+  end: document.querySelector(".end")
+
 };
+
+
+// const { height: cardHeight } = document
+//   .querySelector(".gallery")
+//   .firstElementChild.getBoundingClientRect().top;
+
+// window.scrollBy({
+//   top: cardHeight * 2,
+//   behavior: "smooth",
+// });
+
+
 
 refs.gallery.addEventListener("click", galleryHandler)
 refs.input.addEventListener("input", inputHandler);
@@ -36,8 +50,12 @@ function galleryHandler(e) {
 });
 }
 
-function loadMoreBtnHandler() {
+function loadMoreBtnHandler(e) {
+  e.preventDefault
   count += 1;
+  window.scrollBy({
+  behavior: "smooth", top: 240 * 2, left:0
+});
   if (name !== "") {
     getImg().then((photo) =>{
             if (count > photo.totalHits/40) {
