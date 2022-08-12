@@ -53,31 +53,30 @@ function loadMoreBtnHandler() {
 };
 
 function inputHandler(e) {
-  
-   if (refs.input.value === "") {
-     refs.galleryContainer.innerHTML = ""
-     refs.loadMoreBtn.classList.add("loadMoreHidden");
-     refs.loadMoreBtn.classList.remove("loadMoreVisible");
+  if (refs.input.value === "") {
+    refs.galleryContainer.innerHTML = ""
+    refs.loadMoreBtn.classList.add("loadMoreHidden");
+    refs.loadMoreBtn.classList.remove("loadMoreVisible");
+    Notify.failure('Sorry, there are no images matching your search query. Please try again')
     };
 }
 
 function formHandler(e) {
   e.preventDefault();
-  
   refs.loadMoreBtn.classList.add("loadMoreHidden");
   name = refs.input.value.trim();
    refs.galleryContainer.innerHTML = ""
-  if (name === "" ) {
-    Notify.failure('Sorry, there are no images matching your search query. Please try again');
-     refs.loadMoreBtn.classList.remove("loadMoreVisible");
-refs.loadMoreBtn.classList.add("loadMoreHidden")
-    };
     if (name !== "") {
       refs.loadMoreBtn.classList.add("loadMoreVisible");
       refs.loadMoreBtn.classList.remove("loadMoreHidden")
-      getImg().then(photo =>
-        renderGallery(photo)         
-        ).catch(error => error(console.log(error)));
+     getImg().then((photo) =>{
+            if (photo.hits.length === 0) {
+          Notify.failure('Were sorry, but you ve reached the end of search results');
+              refs.loadMoreBtn.classList.remove("loadMoreVisible");
+       refs.loadMoreBtn.classList.add("loadMoreHidden");
+      };
+      renderGallery(photo)
+    }).catch(error => error(console.log(error)));
     };
 };
     
@@ -102,8 +101,7 @@ function createGallery(array) {
 };
 
 function renderGallery(array) {
-  
-  refs.galleryContainer.insertAdjacentHTML("beforeend", createGallery(array));
+    refs.galleryContainer.insertAdjacentHTML("beforeend", createGallery(array));
 };
 
 
