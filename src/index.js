@@ -181,7 +181,7 @@ refs.loadMoreBtn.classList.add("loadMoreHidden")
     
 function createGallery(array) {
   return array.hits.reduce((acc, { largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => acc +
-    `<a "gallery__item" href="${largeImageURL}">
+    `<a gallery__item" href="${largeImageURL}">
   <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy"/>
    <div class="info">
      <p class="info-item">
