@@ -9,6 +9,7 @@ const KEY = `29175258-0e972b66084e1db5719a62740`;
 
 let name = "";
 
+  let count = 1;
 
 const refs = {
   form: document.querySelector(".search-form"),
@@ -37,13 +38,13 @@ function galleryHandler(e) {
 }
 
 function loadMoreBtnHandler() {
-  let count = 1;
   count += 1;
    if (name !== "") {
         getImg().then(photo =>
         renderGallery(photo) 
         ).catch(error => console.log(error));
-    };
+  };
+  return count
 };
 
 function inputHandler(e) {
